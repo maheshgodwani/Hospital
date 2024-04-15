@@ -16,7 +16,9 @@
             <tr>
                 <td>{{($patient->id)}}</td>
                 <td><a href="{{ route('hospital.show', $patient->id) }}">{{($patient->name)}}</a></td>
-                <td>Edit</td>
+                <td>
+                    <a href="{{ route('hospital.edit', $patient->id) }}" class="btn btn-warning">Edit</a> 
+                </td>
                 <td>
                     <form action="{{ route('hospital.destroy', $patient->id) }}" method="post">
                         @csrf

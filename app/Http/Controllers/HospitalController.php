@@ -29,6 +29,12 @@ class HospitalController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'mobile' => 'required | numeric',
+            'disease => required | alpha_num:ascii',
+            'medicines' => 'required'
+        ]);
         Hospital::create($request->all());
         return redirect()->route('hospital.index');
     }
@@ -46,7 +52,7 @@ class HospitalController extends Controller
      */
     public function edit(Hospital $hospital)
     {
-        //
+        return view('hospital.edit', compact('hospital'));
     }
 
     /**
@@ -54,7 +60,8 @@ class HospitalController extends Controller
      */
     public function update(Request $request, Hospital $hospital)
     {
-        //
+        $hospital->update($request->all());
+        return redirect()->route('hospital.index');
     }
 
     /**
