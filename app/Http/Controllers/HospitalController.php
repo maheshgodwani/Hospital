@@ -21,7 +21,7 @@ class HospitalController extends Controller
      */
     public function create()
     {
-        //
+        return view('hospital.create');
     }
 
     /**
@@ -29,7 +29,8 @@ class HospitalController extends Controller
      */
     public function store(Request $request)
     {
-        
+        Hospital::create($request->all());
+        return redirect()->route('hospital.index');
     }
 
     /**

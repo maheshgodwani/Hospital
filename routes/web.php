@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\VisitController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HospitalController;
 /*
@@ -18,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::resource('/hospital', HospitalController::class);
+Route::resource('/visit', VisitController::class)->only(['store']);

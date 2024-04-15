@@ -9,4 +9,10 @@ class Hospital extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $guarded = [];
+
+    public function getVisits(){
+        return $this->hasMany(Visit::class, 'patients_id', 'id');
+    }
 }
