@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-
+use Illuminate\Support\Str;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Hospital>
  */
@@ -16,8 +16,11 @@ class HospitalFactory extends Factory
      */
     public function definition(): array
     {
+        $name = fake()->name();
+        $slug = $name."-".rand();
         return [
-            'name'=>fake()->name(),
+            'name'=>$name,
+            'slug'=>Str::slug($slug),
             'mobile'=>fake()->phoneNumber,
             'disease'=>fake()->sentences(3, true),             
             'medicines'=>fake()->sentences(5, true)

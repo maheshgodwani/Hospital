@@ -15,4 +15,8 @@ class Hospital extends Model
     public function getVisits(){
         return $this->hasMany(Visit::class, 'patients_id', 'id');
     }
+
+    public function getRouteKeyName(){
+        return 'slug';
+    }
 }

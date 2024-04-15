@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Edit Patients Information Here....</h1> 
-<form action="{{route('hospital.update', $hospital->id)}} " method="post">
+<form action="{{route('hospital.update', $hospital->slug)}} " method="post">
     @method('put')
     @csrf  
     <div class="form-group">

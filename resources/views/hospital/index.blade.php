@@ -15,12 +15,12 @@
         @forelse($patients as $patient)
             <tr>
                 <td>{{($patient->id)}}</td>
-                <td><a href="{{ route('hospital.show', $patient->id) }}">{{($patient->name)}}</a></td>
+                <td><a href="{{ route('hospital.show', $patient->slug) }}">{{($patient->name)}}</a></td>
                 <td>
-                    <a href="{{ route('hospital.edit', $patient->id) }}" class="btn btn-warning">Edit</a> 
+                    <a href="{{ route('hospital.edit', $patient->slug) }}" class="btn btn-warning">Edit</a> 
                 </td>
                 <td>
-                    <form action="{{ route('hospital.destroy', $patient->id) }}" method="post">
+                    <form action="{{ route('hospital.destroy', $patient->slug) }}" method="post">
                         @csrf
                         @method('delete')
                         <input type="submit" class="btn btn-danger" value="Trace">
