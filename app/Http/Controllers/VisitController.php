@@ -11,7 +11,7 @@ class VisitController extends Controller
     public function store(Request $request)
     {
         Visit::create($request->all());
-        return redirect()->route('hospital.show', $request->patients_slug);
+        return redirect()->route('hospital.show', $request->patients_id);
     }
 
 }

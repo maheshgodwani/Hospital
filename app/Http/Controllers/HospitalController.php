@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Hospital;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class HospitalController extends Controller
 {
@@ -35,7 +36,11 @@ class HospitalController extends Controller
             'disease => required | alpha_num:ascii',
             'medicines' => 'required'
         ]);
-        Hospital::create($request->all());
+        $hospitalData = $request->all();
+        $hospitalData['slug'] = Str::slug($request->input('name')); // Generate slug from hospital name
+
+        Hospital::create($hospitalData);
+
         return redirect()->route('hospital.index');
     }
 

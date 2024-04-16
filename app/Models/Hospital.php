@@ -19,4 +19,7 @@ class Hospital extends Model
     public function getRouteKeyName(){
         return 'slug';
     }
+
+    protected $fillable = ['name', 'mobile', 'disease', 'medicines', 'slug'];
+
 }
