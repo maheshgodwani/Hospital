@@ -18,5 +18,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/hospital', HospitalController::class);
+Route::resource('/hospital', HospitalController::class)->only(['index','show']);
+Route::resource('/hospital', HospitalController::class)->middleware('auth')->except(['index','show']);
 Route::resource('/visit', VisitController::class)->only(['store']);
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
